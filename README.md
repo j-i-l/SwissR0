@@ -6,7 +6,7 @@ The assessment if based on a contact network approach, modeling the population a
 Individuals are distributed homogeneously over the municipal area (certainly inaccurate in rural and mountain regions).
 
 A HTML-based presentation of the basic results is available [here](presentation/presentations/jgm_26_11_14/pres.html).
-_Note: The presentation relies on various js that are provided directly with the repository. You run these files at your own risk._
+_Note: The presentation relies on various javascripts that are provided directly with the repository. You run these files at your own risk._
 
 ![relative representation of R0](presentation/presentations/jgm_26_11_14/plots/r0_2000_averaged_0_01.svg)
 
@@ -42,4 +42,4 @@ The better approach would be to use resident population data from the link provi
 ## Presentation
 
 An HTML-based presentation of some basic results is available [here](presentation/presentations/jgm_26_11_14/pres.html).
-Simply clone the repo and then run the file in your favourite browser, but note that js is required to display the presentation correctly.
+Simply clone the repo and then run the file in your favourite browser, but note that several javascripts are required and provided in the repo to display the presentation correctly. _Also note that this was my first attempt to do a presentation in HTML, so please don't be offended by the looks..._
