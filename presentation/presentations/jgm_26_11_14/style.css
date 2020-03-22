@@ -1,0 +1,130 @@
+/*it is time for some compartments using div elements. Here is just the style of the different compartments
+    loock at the example_2_playground for the thing*/
+
+
+.framing {
+    background-color: #d3cfd6;
+    border-radius:5px;
+    padding-right:3%;
+}
+
+.small_p {
+    font-size:60%;
+    color:black;
+    line-height: 85%;
+}
+.small_p_imp {
+    font-size:70%;
+    color: #1a1a1a;
+    line-height: 100%;
+}
+.small_p_imp_sur {
+    padding:5px;
+    font-size:70%;
+    color: #1a1a1a;
+    line-height: 100%;
+    border:2px solid #740d14;
+    border-radius:5px;
+}
+
+.small_p_bg {
+    padding:5px;
+    background-color: gray;
+    border-radius:5px;
+    font-size:40%;
+    color: #1a1a1a;
+    line-height: 100%;
+}
+
+
+ul {
+    color: #484647;
+    font-size:65%;
+}
+
+ul > li
+{
+    color: #484647;
+    font-size:95%;
+}
+ul > li > span
+{
+    color: black;
+    font-size:100%;
+}
+
+
+.footer_out {
+    position: absolute;
+    bottom:5%;
+    height:6%;
+    width:85%;
+}
+.footer_in {
+    width:90%;
+    text-align:right;
+    color: #4e4e4e;
+}
+
+.footer_in > p.author {
+    padding-right: -5%;
+    font-size:35%;
+}
+
+.result {
+    height:80%;
+    width:90%;
+}
+
+.wrapper {
+  margin-right: 50%;
+
+}
+.left {
+  float: left;
+  width: 100%;
+
+}
+.right {
+  float: right;
+  width: 50%;
+  margin-right: -50%;
+
+}
+#cleared {
+  clear: both;
+}
+
+.wrapper_res {
+  margin-right: 30%;
+
+}
+.left_res {
+  float: left;
+  width: 70%;
+
+}
+.right_res {
+  float: right;
+  width: 50%;
+  margin-right: -30%;
+
+}
+
+.wrapper_res_eq {
+  margin-right: 50%;
+
+}
+.left_res_eq {
+  float: left;
+  width: 50%;
+    z-index: 1;
+
+}
+.right_res_eq {
+  float: right;
+  width: 50%;
+  margin-right: -50%;
+    z-index: 2;
+
+}

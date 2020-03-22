@@ -1,0 +1,118 @@
+h2 {
+    border:2px dashed #1a3774;
+    /*Each html element has a box around it, you can make it visible if you want*/
+    border-radius:5px; /*Rounden the edges of the box*/
+    padding:2px;
+    /*The padding property defines the space between the boarder and the content*/
+    margin:30px; /*sets the space outside the box*/
+}
+
+/*we define the style for the important class:*/
+.important {
+    color: #ff0015;
+    font-family: arial, fantasy;
+}
+
+/*
+    with # you can specify an id for a html element. Here we select the h2 element with id special_1 and make it blue:
+*/
+h2#special_1 {
+    color:blue;
+}
+/*
+    The id allows to modify SINGLE elements. If you want to modify a group of elements, use the class attribute.
+    You can set the style for a group of elements like this:
+*/
+p.error {
+    color:darkred;
+}
+
+a {
+    /*if we do not want to underline links:*/
+    text-decoration: none;
+}
+/*You can set the colors for the a element:*/
+a:link    {color:#000000; background-color:transparent}
+a:visited {color:#000000; background-color:transparent}
+a:hover   {color:#ff0000; background-color:transparent}
+a:active  {color:#ff0000; background-color:transparent}
+
+/*Here we set the style for a table border (table), the borders of a table header (th) and table data (td)*/
+table, th, td {
+    border: 1px solid #00d319;
+    /*This will create separate boarder for each of these elements (so double borders sometimes) to modify the space
+    between these lines yse the boarder-spacing property. note that if you want to collapse double boarders use the
+    border-collapse property. It will also overwrite the boarder-spacing*/
+    border-collapse: collapse;
+}
+/*If you want to modify the distance between the cell boarders and the content use the padding property:*/
+th, td {
+    padding: 15px;
+    /*use the text-align property to change text alignment in the table*/
+    text-align:right;
+}
+
+/*the table with the id t01 gets a special treatment:*/
+/*select every even table row of the table with id t01 and change its bg color*/
+table#t01 tr:nth-child(even) {
+    background-color: #a8a8a8;
+}
+
+
+/*You can format a list to a menu:*/
+ul#menu {
+    padding: 0; /*set no space to the borders*/
+}
+ul#menu li {
+    display: inline; /*make the list horizontal*/
+}
+/*In the following line we choose the ul with id="menu" in this the li element and in those li elements the a element:*/
+ul#menu li a {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; /*make no underline for the links*/
+    border-radius: 4px 4px 0 0;
+}
+/*we capture the event on hover over the link*/
+ul#menu li a:hover {
+    background-color: orange;
+}
+
+/*The class attribute is useful to define uniform styles. To set the styles for a class use the .class syntax:*/
+div.alert h2{
+    background-color: #ff0015;
+    font-size:200%;
+}
+/*Note: we could also just write .alert, then not just the div elements of class alert would be considered*/
+/*Note: we need to specify that we want to change also the style of h2 inside such a div of class alert. This is
+    needed since we defined the style of h2 elements earlier already.*/
+
+/*it is time for some compartments using div elements. Here is just the style of the different compartments
+    loock at the example_2_playground for the thing*/
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:20%;
+    float:left; /*the float allows to have several block elements on the same "line", I guess*/
+    padding:5px;
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}

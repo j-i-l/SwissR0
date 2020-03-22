@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+
+<head>
+
+<link rel="stylesheet" href="style.css"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);
+
+/*Define the section. If no specific id is given, a slide will look like this*/
+section {
+  background: #ffffff;
+  color: #080808;
+  padding: 2em;
+  font-family:  Georgia,Times,Times New Roman, serif; /*"PT Serif", Baskerville, Georgia, serif;*/
+}
+/*id selector:*/
+/*Whenever a section with id="follow" is given the background will be set to none*/
+#follow {
+    background: none;
+}
+/*class*/
+/*elements of this class are grey, so this can be used define the colors of your presentation*/
+.grey {
+  color: #777;
+}
+
+/*set the style for the hyper ref*/
+a:link,
+a:visited {
+  color: orange;
+  text-decoration: none;
+}
+/*what should happen on hover over a link*/
+a:hover {
+  text-decoration: underline;
+}
+
+</style>
+
+<script src="../../stack_mod/d3.v3.min.js"></script>
+<script src="../../stack_mod/stack.v1.min.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+  });
+MathJax.Extension.measureTime = {};
+MathJax.Hub.Register.StartupHook("Begin Typeset", function () {
+  MathJax.Extension.measureTime.startTime = (new Date()).getTime();
+});
+
+MathJax.Hub.Register.StartupHook("End Typeset", function () {
+  MathJax.Extension.measureTime.endTime = (new Date()).getTime();
+});
+
+MathJax.Hub.Register.StartupHook("End", function () {
+  var timeSpent = (MathJax.Extension.measureTime.endTime - MathJax.Extension.measureTime.startTime);
+  _gaq.push(['_trackTiming', 'MathJax', 'Typesetting', timeSpent, document.URL]);
+//  console.log(timeSpent);
+
+
+});
+
+</script>
+    <script type="text/javascript"
+        src="../../js_src/MathJax-2.3-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/javascript"
+        src="../../js_src/d3.js">
+    </script>
+
+</head>
+
+<body>
+<!-- Here the slides start. -->
+<section style="text-align:center;padding-top:5em;">
+    <h2 id="title">Influence of a population's demography on the basic reproductive number, $R_0$ </h2>
+
+    <p class="small_p">A case study of the swiss population.
+    <p class="grey">Jonas I. Liechti
+
+</section>
+
+
+<section id="overview">
+    <h4 class="framing" style="text-align:right;">Overview</h4>
+    <ul type="disc" style="padding-left:5%;">
+        <li><span>Aim</span>
+        </li>
+        <li><span>The Compartment Model - An Introduction</span>
+        </li>
+        <li><span>Mass Action Kinetics</span>
+        </li>
+        <li><span>Host Homogeneity</span>
+        </li>
+        <li><span>Swiss Demography</span>
+        </li>
+        <li><span>Demographic $R_0$</span>
+        </li>
+        <li><span>Outlook</span>
+        </li>
+    </ul>
+
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+
+<section id="aim">
+    <h4 class="framing" style="text-align:right;">Aim</h4>
+    <p style="padding:50px; margin-left:5%; width:70%; text-align:center border:8px solid #01b321;
+    border-radius:5px;">
+                  <span style="font-size:80%; padding-left:-30px;">
+                     Include demographic features of a host population into a model of disease spread.
+                  </span>
+          </p>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="comp_1">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+
+      </div>
+      <div class="right">
+
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+<section id="comp_2">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+      </div>
+      </div>
+      <div class="cleared"></div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="comp_3">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="comp_4">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="comp_5">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+          <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Model's Assumptions:</p>
+
+          </div>
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+
+<section id="comp_6">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+          <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Model's Assumptions:</p>
+
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Fixed Parameters: </span>
+                  <br/>
+                  <br/>
+                  $\beta$ and $\gamma$ are constant over time.
+              </p>
+
+
+          </div>
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="comp_7">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+          <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Model's Assumptions:</p>
+
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Fixed Parameters: </span>
+                  <br/>
+                  <br/>
+                  $\beta$ and $\gamma$ are constant over time.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Mass Action Kinetics: </span>
+                  <br/>
+                  <br/>
+                  Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+              </p>
+          </div>
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+<section id="comp_8">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+          <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Model's Assumptions:</p>
+
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Fixed Parameters: </span>
+                  <br/>
+                  <br/>
+                  $\beta$ and $\gamma$ are constant over time.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Mass Action Kinetics: </span>
+                  <br/>
+                  <br/>
+                  Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Density Dependence: </span>
+                  <br/>
+                  <br/>
+                  $\frac{dS}{dt} \propto SI$.
+              </p>
+
+          </div>
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="comp_9">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+          <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Model's Assumptions:</p>
+
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Fixed Parameters: </span>
+                  <br/>
+                  <br/>
+                  $\beta$ and $\gamma$ are constant over time.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Mass Action Kinetics: </span>
+                  <br/>
+                  <br/>
+                  Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Density Dependence: </span>
+                  <br/>
+                  <br/>
+                  $\frac{dS}{dt} \propto SI$.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Host Homogeneity: </span>
+                  <br/>
+                  <br/>
+                  Individuals are indistinguishable.
+              </p>
+
+          </div>
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+
+<section id="comp_10">
+    <h4 class="framing" style="text-align:right;">Compartment Model</h4>
+    <div class="wrapper">
+      <div class="left">
+          <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Model's Assumptions:</p>
+
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Fixed Parameters: </span>
+                  <br/>
+                  <br/>
+                  $\beta$ and $\gamma$ are constant over time.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Mass Action Kinetics: </span>
+                  <br/>
+                  <br/>
+                  Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px;">
+                  <span style="font-size:120%; padding-left:-30px;">Density Dependence: </span>
+                  <br/>
+                  <br/>
+                  $\frac{dS}{dt} \propto SI$.
+              </p>
+              <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Host Homogeneity: </span>
+                  <br/>
+                  <br/>
+                  Individuals are indistinguishable.
+              </p>
+
+          </div>
+      </div>
+      <div class="right">
+          <div class="result" style="padding-bottom:30px;">
+                <img class="svgs" src="plots/SIR_comp.svg" >
+          </div>
+          <div style="padding-left:50px; width:100%;">
+              <p class="small_p">$\frac{dS}{dt} = -\beta SI$</p>
+              <p class="small_p">$\frac{dI}{dt} = \beta SI - \gamma I$</p>
+              <p class="small_p">$\frac{dR}{dt} = \gamma I$</p>
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma}$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="mak_1">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+              </p>
+      </div>
+      <div class="right">
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="mak_2">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_nodes.svg" >
+        </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+<section id="mak_3">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_full.svg" >
+        </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="mak_4">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Each host is in contact with just a subset of other hosts.
+              </p>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_full.svg" >
+        </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="mak_5">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Each host is in contact with just a subset of other hosts.
+              </p>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_marked.svg" >
+        </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+<section id="mak_6">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Each host is in contact with just a subset of other hosts.
+              </p>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_thin.svg" >
+        </div>
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="mak_7">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Each host is in contact with just a subset of other hosts.
+              </p>
+        <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+                <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+
+                  </div>
+          </div>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_thin.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="mak_8">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Each host is in contact with just a subset of other hosts.
+              </p>
+        <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+                <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+                <p class="small_p_imp" style="padding-left:30px;">
+                    $R_0 = \sum_k  P_k * (k - 1) * P_{trans}$
+                </p>
+                  </div>
+          </div>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_thin.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="mak_9">
+    <h4 class="framing" style="text-align:right;">Mass Action Kinetics</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Populations $S$ and $I$ are well mixed and encounters between two hosts happen randomly.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Each host is in contact with just a subset of other hosts.
+              </p>
+        <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+                <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+                <p class="small_p_imp" style="padding-left:30px;">
+                    $R_0 = \sum_k  P_k * (k - 1) * P_{trans}$
+                </p>
+                  <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma + \beta} \sum_k (k - 1) P_k$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_thin.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="hh_1">
+    <h4 class="framing" style="text-align:right;">Host Homogeneity</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Individuals are indistinguishable.
+                  </span>
+          </p>
+
+      </div>
+      <div class="right">
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="hh_2">
+    <h4 class="framing" style="text-align:right;">Host Homogeneity</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Individuals are indistinguishable.
+                  </span>
+          </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_nodes_coords_no.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="hh_3">
+    <h4 class="framing" style="text-align:right;">Host Homogeneity</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Individuals are indistinguishable.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Introduce different types of hosts. &#8594; Give each node a position.
+              </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_nodes_coords_no.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="hh_4">
+    <h4 class="framing" style="text-align:right;">Host Homogeneity</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Individuals are indistinguishable.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Introduce different types of hosts. &#8594; Give each node a position.
+              </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_nodes_coords.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="hh_5">
+    <h4 class="framing" style="text-align:right;">Host Homogeneity</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Individuals are indistinguishable.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Introduce different types of hosts. &#8594; Give each node a position.
+              </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_nodes_coords_d.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="hh_6">
+    <h4 class="framing" style="text-align:right;">Host Homogeneity</h4>
+    <div class="wrapper">
+      <div class="left">
+        <p class="small_p_bg" style="padding-left:40px; border:8px inset #b30101;
+    border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">
+                      Individuals are indistinguishable.
+                  </span>
+          </p>
+            <p class="small_p_bg" style="padding-left:40px; border:8px inset #0bb314; border-radius:5px;">
+                  <span style="font-size:120%; padding-left:-30px;">Relax Assumption: </span>
+                  <br/>
+                  <br/>
+                  Introduce different types of hosts. &#8594; Give each node a position.
+              </p>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" src="plots/network_nodes_coords_thin.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="dem_net_1">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+
+      </div>
+      <div class="right">
+
+      </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="dem_net_2">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+              <p class="small_p">Population density leads to spatial distribution of nodes</p>
+
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="dem_net_3">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+              <p class="small_p">Population density leads to spatial distribution of nodes</p>
+
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens_nodes_single.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="dem_net_4">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Population density leads to spatial distribution of nodes</p>
+                <p class="small_p">The probability of a connection depends on the distance</p>
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens_nodes_single.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="dem_net_5">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Population density leads to spatial distribution of nodes</p>
+                <p class="small_p">The probability of a connection depends on the distance</p>
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens_nodes_single.svg" >
+            </div>
+          <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/d_vs_pc.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="dem_net_6">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Population density leads to spatial distribution of nodes</p>
+                <p class="small_p">The probability of a connection depends on the distance</p>
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens_nw.svg" >
+            </div>
+          <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/d_vs_pc.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="dem_net_7">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Population density leads to spatial distribution of nodes</p>
+                <p class="small_p">The probability of a connection depends on the distance</p>
+          </div>
+        <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+                <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+                  <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 = \frac{\beta}{\gamma + \beta} \sum_k (k - 1) P_k$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens_nw.svg" >
+            </div>
+          <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/d_vs_pc.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="dem_net_8">
+    <h4 class="framing" style="text-align:right;">Demographic Networks</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic Idea:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Population density leads to spatial distribution of nodes</p>
+                <p class="small_p">The probability of a connection depends on the distance</p>
+          </div>
+        <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+                <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+                  <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 (x) = \frac{\beta}{\gamma + \beta} \sum_k (k - 1) P_k(x)$</p>
+                  </div>
+          </div>
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/popul_dens_nw.svg" >
+            </div>
+          <div class="result" style="padding-bottom:30px; padding-left:20%;">
+                <img class="svgs" style="width:150%" src="plots/d_vs_pc.svg" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="res_1">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="res_2">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 2000</p>
+                <img class="svgs" src="plots/vz_2000_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_2000_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="res_3">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1888</p>
+                <img class="svgs" src="plots/vz_1888_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_1888_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="res_4">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1900</p>
+                <img class="svgs" src="plots/vz_1900_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_1900_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="res_5">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1920</p>
+                <img class="svgs" src="plots/vz_1920_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_1920_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="res_6">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1941</p>
+                <img class="svgs" src="plots/vz_1941_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_1941_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="res_7">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1960</p>
+                <img class="svgs" src="plots/vz_1960_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_1960_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="res_8">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1980</p>
+                <img class="svgs" src="plots/vz_1980_normal.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/vz_1980_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+          <div style="padding-left:10%; width:100%;">
+                <p class="small_p">Data from the Swiss <b>Federal Statistical Office</b></p>
+                <p class="small_p">Population counts available on the district level</p>
+                <p class="small_p">Each decade the population is counted</p>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="res_9">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper_res_eq">
+      <div class="left_res_eq" style="z-index: 1;">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 1888</p>
+                <img class="svgs" src="plots/vz_1888_normal.svg" height="100%" width="250%" style="float:left; margin-left:-250px; margin-top:-100px;z-index: 3;" >
+                <img class="svgs" src="plots/vz_1888_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;z-index: 3;" >
+            </div>
+      </div>
+      <div class="right_res_eq" style="z-index: 1;">
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Volkszählung 2000</p>
+                <img class="svgs" src="plots/vz_2000_normal.svg" height="100%" width="250%" style="float:left; margin-left:-250px; margin-top:-100px; ;" >
+                <img class="svgs" src="plots/vz_2000_colormap_log.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="res_10">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Data:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+              <ul type="disc" style="padding-left:5%;">
+                <li><span>Population densities from Volkszählungen</span>
+                    <ul>
+                        <li>$1\%$ of the population is affected &#8594; $70'000$ hosts</li>
+                        <li>Randomly distributed inside each district</li>
+                    </ul>
+                </li>
+                <li><span>The connection probability</span>
+                    <ul>
+                        <li>Exponential decay</li>
+                    </ul>
+                </li>
+            </ul>
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%; padding-top:10%;">
+
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="res_11">
+    <h4 class="framing" style="text-align:right;">Swiss Demography</h4>
+    <div class="wrapper">
+      <div class="left">
+         <div style="padding-left:50px; width:90%;">
+              <p class="small_p_imp">The Data:</p>
+         </div>
+          <div style="padding-left:10%; width:100%;">
+              <ul type="disc" style="padding-left:5%;">
+                <li><span>Population densities from Volkszählungen</span>
+                    <ul>
+                        <li>$1\%$ of the population is affected &#8594; $70'000$ hosts</li>
+                        <li>Randomly distributed inside each district</li>
+                    </ul>
+                </li>
+                <li><span>The connection probability</span>
+                    <ul>
+                        <li>Exponential decay</li>
+                    </ul>
+                </li>
+            </ul>
+          </div>
+
+      </div>
+      <div class="right">
+        <div class="result" style="padding-bottom:30px; padding-left:20%; padding-top:10%;">
+            <p class="small_p" style="font-size:40%; color:gray;">Connection probability:</p>
+                <img class="svgs" style="width:100%" src="plots/used_exp_dist.svg" >
+
+            </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="r0map_1">
+    <h4 class="framing" style="text-align:right;">Demographic $R_0$</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+      </div>
+      <div class="right_res">
+<div style="padding-left:50px; width:100%;">
+
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 (x) = \frac{\beta}{\gamma + \beta} \sum_k (k - 1) P_k(x)$</p>
+                  </div>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="r0map_2">
+    <h4 class="framing" style="text-align:right;">Demographic $R_0$</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Fluctuations in $R_0$ in the year 2000</p>
+                <img class="svgs" src="plots/r0_2000_averaged_0_01.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/r0_2000_colormap_averaged_0_01.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+<div style="padding-left:50px; width:100%;">
+
+              <p class="small_p_imp">The basic reproduction number:</p>
+              <div style="text-align:center; align-content:center;">
+              <p class="small_p_bg" style="padding-left:30px;">Expected number of secondary infections if a single infected individual is placed in the population.</p>
+              <p class="small_p_imp_sur" style="padding-left:30px;">$R_0 (x) = \frac{\beta}{\gamma + \beta} \sum_k (k - 1) P_k(x)$</p>
+                  </div>
+          </div>
+          </div>
+      <div class="cleared"></div>
+    </div>
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="r0map_3">
+    <h4 class="framing" style="text-align:right;">Demographic $R_0$</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+      </div>
+      <div class="right_res">
+<div style="padding-left:50px; width:100%;">
+
+              <p class="small_p_imp">How does population growth influence $R_0$?</p>
+                  </div>
+          </div>
+          </div>
+      <div class="cleared"></div>
+
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+<section id="r0map_4">
+    <h4 class="framing" style="text-align:right;">Demographic $R_0$</h4>
+    <div class="wrapper_res">
+      <div class="left_res">
+
+                <div class="result" style="padding-bottom:30px; padding-left:-20%;">
+                    <p class="small_p_imp" style="font-size:60%; color:gray;">Relative change from 1950 to 2000</p>
+                <img class="svgs" src="plots/r0_1950_rel_diff_0_01.svg" height="100%" width="150%" style="float:left; margin-left:-300px; margin-top:-100px;" >
+                <img class="svgs" src="plots/r0_1950_colormap_rel_diff_0_01.svg" width="5%" height="30%" style="float:left; margin-left:-220px; margin-top:350px;" >
+            </div>
+      </div>
+      <div class="right_res">
+<div style="padding-left:50px; width:100%;">
+
+              <p class="small_p_imp">How does population growth influence $R_0$?</p>
+                  </div>
+          </div>
+          </div>
+      <div class="cleared"></div>
+
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="outlook_1">
+    <h4 class="framing" style="text-align:right;">Outlook</h4>
+    <ul type="disc" style="padding-left:5%;">
+        <li><span>Test and design epidemic prevention and control mechanisms</span>
+        </li>
+        <li><span>Model the spatial spread of a disease</span>
+        </li>
+    </ul>
+
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+<section id="thanks">
+    <h4 class="framing" style="text-align:right;">Tank you!</h4>
+
+    <div class="footer_out framing">
+        <div class="footer_in">
+            <p class="author">Jonas I. Liechti</p>
+
+        </div>
+    </div>
+</section>
+
+
+<script>
+var mystack = stack()
+    .on("activate", activate)
+    .on("deactivate", deactivate);
+
+var section = d3.selectAll("section"),
+    follow = d3.select("#follow"),
+    followAnchor = d3.select("#follow-anchor"),
+    lorenz = d3.select("#lorenz"),
+    followIndex = section[0].indexOf(follow.node()),
+    lorenzIndex = section[0].indexOf(lorenz.node());
+
+function refollow() {
+  followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
+}
+
+function activate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", refollow);
+  if (i === lorenzIndex) startLorenz();
+}
+
+function deactivate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", null);
+  if (i === lorenzIndex) stopLorenz();
+}
+
+var lorenzInterval;
+
+function startLorenz() {
+  var δτ = 0.003,
+      ρ = 28,
+      σ = 10,
+      β = 8 / 3,
+      x = .5,
+      y = .5,
+      z = 10,
+      n = 30;
+
+  var width = 1280,
+      height = 720;
+
+  var canvas = d3.select('#a_canvas')
+      .style("position", "absolute")
+      .style("top", 0)
+      .style("left", 0)
+      .style("width", "100%")
+      .style("height", "100%")
+      .attr("width", width)
+      .attr("height", height);
+
+  var color = d3.scale.linear()
+      .domain([0, 20, 30, 50])
+      .range(["yellow", "orange", "brown", "purple"])
+      .interpolate(d3.interpolateHcl);
+
+  var context = canvas.node().getContext("2d");
+
+  context.lineWidth = .2;
+  context.fillStyle = "rgba(0,0,0,.0)";
+
+  d3.timer(function() {
+    context.save();
+    context.globalCompositeOperation = "lighter";
+    context.translate(width / 2, height / 2);
+    context.scale(12, 14);
+    context.rotate(30);
+    for (var i = 0; i < n; ++i) {
+      context.strokeStyle = color(z);
+      context.beginPath();
+      context.moveTo(x, y);
+      x += δτ * σ * (y - x);
+      y += δτ * (x * (ρ - z) - y);
+      z += δτ * (x * y - β * z);
+      context.lineTo(x, y);
+      context.stroke();
+    }
+    context.restore();
+    return !lorenzInterval;
+  });
+
+  lorenzInterval = setInterval(function() {
+    context.fillRect(0, 0, width, height);
+  }, 100);
+}
+
+function stopLorenz() {
+  lorenzInterval = clearInterval(lorenzInterval);
+}
+
+</script>
+</body>

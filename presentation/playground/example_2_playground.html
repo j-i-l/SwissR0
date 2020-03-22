@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<!-- The title element sets the title of this html file. The title will be shown in the tab in the browser -->
+<title>Learning HTML5</title>
+
+<!-- this is the head of the html file. What is written in here are information ABOUT the content of this html file -->
+<!-- the head is also said to contain the metadata of the html file -->
+<!-- the lang attribute declares the language, this is important for search engines, screen readers -->
+<head lang="en">
+    <!-- the first two letters in the lang tag declare the language, the 2nd the dialect. eg. "en-US" -->
+    <meta charset="UTF-8">
+    <title>This is just to learn</title>
+    <!-- The style element can be used to change the default styles of html element. It must be in the header -->
+    <!-- The syntax inside the style element is: element { property:value ; property:value } -->
+    <style>
+        h2 {background-color:lightgray}
+    </style>
+    <!-- If you want to use an external stylesheet use the link element in the header: -->
+    <link rel="stylesheet" href="my_style.css"/>
+    <!-- you should go and check out the my_style.css file -->
+    <!-- external stylesheets are great to apply the same style for various pages -->
+
+
+    <!-- This is for the rescale of the html page. The example of the bootstrap tool:-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+</head>
+
+<!-- the visible part is in the body -->
+<body style="font-family:courier"> <!-- here we set the CSS property "font-family" by the use of the attribute style -->
+    <h1><!-- This is the start of a title-->
+        <a id="top"></a> <!-- Just a bookmarks, go on reading... (btw: <a id=".."/> seems not to work in some browsers) -->
+        Hy there
+    </h1><!-- and this is the closing tag-->
+
+    <!-- Another, smaller title-->
+    <h2>This is just to play</h2>
+    <!-- NOTE: h1-h6 are heading elements, USE THEM. They are used by searchengines to index pages -->
+    <!-- This is a specially styled h2 element -->
+    <h2 id="special_1">They call me special</h2>
+
+    <!-- This is a paragraph tag (look at the css file about the class attribute-->
+    <p class="error">This is a paragraph</p>
+    <!-- NOTE: -->
+    <!-- the paragraph tag also works if you do not close it (no </p>) but it's always better to put it anyways -->
+    <p title="Titled Paragraph">This paragraph has a title. <br/> <b>Hover over and you see it.</b></p>
+    <!-- ISSUE: I'm not sure what exactly the title attribute is used for -->
+    <!-- NOTE: The b element makes text bold without changing the semantic importance of the bold text.-->
+    <!-- To emphasise that bold text is semantically important use the strong tag: -->
+    <p><strong>This</strong> is important, not just bold.</p>
+
+    <!-- Same thing with italic text: use the i element for italic or the em element for italic + semantic importance-->
+    <p><i>This</i> is italic and <em>this</em> is important.</p>
+    <!-- There are other elements to modify a text: -->
+    <p>You can:<br/>Write <small>small</small>, <sup>superscript</sup>, <sub>subscript</sub>, <del>deleted</del>,
+    <ins>inserted</ins>, <q>quoted</q> and certainly many other variants of text...</p>
+
+    <!-- use the blockquote element for entire block of quoted text: -->
+    <!-- the cite attribute indicates the source of the citation -->
+    <blockquote cite="http://www.w3schools.com/html/html_quotation_elements.asp">
+        HTML Long Quotations
+    </blockquote>
+    <!-- The cite element is used to cite the title of something. Its default style is italic. -->
+    <!-- The dfn element is used do make definitions -->
+    <!-- ISSUE: for both of these I'm not sure what they are used for... -->
+
+    <!-- to draw a horizontal line use the element hr -->
+    <hr/>
+
+    <!-- to put a link in html, use the a tag -->
+    <!-- the href attribute is used to specify the address -->
+    <!-- attributes are ALWAYS in the start tag -->
+    <a href="../presentations/example_1.html" target="_blank">This is a link</a>
+    <!-- The content does not need to be text, it could also be an image or another html element.-->
+    <a href="../presentations/example_1.html" target="_blank">
+        <img src="../images/smiley.gif" alt="just an image" style="width:42px;height:42px;border:0/*border is needed to keep IE happy*/">
+    </a>
+    <!-- The target attribute specifies how to open the link. Possibilities are: -->
+    <!-- _blank: new window or tab -->
+    <!-- _self: in the same frame (this is the default) -->
+    <!-- _parent: open in parent frame (I don't know what this means) -->
+    <!-- _top:open on the top level, i.e. will break out of the frame if the page is in a frame -->
+
+    <!-- You can use the a element along with the id attribute to bookmark elements of your html: -->
+    <a href="#top">go up to the top</a>
+    <!-- you can also go to a bookmark on an external page, just use href="url#bookmark" -->
+
+    <!-- use the br tag if you want to go to a new line -->
+    <br/>
+    <!-- The br tag is an "empty" element, so it does not need to be closed by a </br> instead it is closed -->
+    <!-- by the / in the opening tag. Just <br> works as well, but <br/> is more robust. -->
+
+    <!-- The img element is used to add an image, this tag does not need to be closed -->
+    <img title="and this is a picture" src="../images/example_2_sun.jpeg" alt="just a picture" width="263" height="192">
+    <!-- NOTE: The alt attribute can be used to provide text that will be shown if the element can not be -->
+    <!-- displayed properly or if someone 'listens' to the website, the alt attribute will be read to them -->
+    <!-- NOTE: the alt attribute is required! it seems... -->
+    <!-- NOTE: width and height should always bee present. But preferably as a property in the style attribute, not as attributes on their own -->
+    <!-- so this is actually better: (in the style attribute it overwrites external and internal styles as attrutes it does not-->
+    <img title="and this is a picture" src="../images/example_2_sun.jpeg" alt="just a picture" style="width:263px;height:192px">
+    <p>
+        This is another paragraph.<br/> Use the 'pre' element if a text should keep its spacing and line breaks.
+    </p>
+    <pre>
+        This text
+        is written
+        in a "pre" element.
+    </pre>
+    <p style="text-align:center">
+        This text
+        is not
+        in a "pre" element. Put a "p" element with the CSS property text-align:center.
+    </p>
+    <hr/>
+    <!-- The style attribute allows to change the look of an element -->
+    <!-- The general syntax is styel="property:value" where property is a CSS property and value sets its value -->
+    <h3 style="background-color:mediumpurple">Colored Background</h3>
+    <h3 style="color:#e7982a">Colored Text</h3>
+    <h3 style="font-family:verdana;font-style:oblique">Different Style</h3>
+
+    <!-- There are different ways to indicate computer code, keyboard input etc: -->
+    <!-- Note: They can all be stuffed in other elements, like pre here: -->
+    <pre>
+        <kbd>This is keyboard input.</kbd>
+        <samp>This is computer output.</samp>
+        <code>This is computer code.</code>
+        <var>E = mc<sup>2</sup></var> This was a mathematical output.
+    </pre>
+
+    <!-- comment elements are used to help the Internet Explorer, -->
+    <!--[if IE 8]>
+        <p>This is only shown in Internet Explorer 8 and is treated as a comment otherwise.</p>
+    <![endif]-->
+
+    <h1 style="color:darkred">Talk about CSS</h1>
+    <!-- CSS stands for Cascading Style Sheets -->
+    <!-- Styling can be added in 3 ways: 1.inline:using the style attribute, 2.Internal:using style element in the header -->
+    <!-- and 3.External:using one or many CSS file(s).
+
+    <!-- going back to images, we can make maps on images, a map defines different areas on an image: -->
+
+    <hr/>
+
+    <!-- you can overlay a map over an image, just specify the id of the map with the usemap attribute -->
+    <img src="../images/example_2_sun.jpeg" usemap="#justamap" style="width:236px;height:192px"/>
+    <!-- and here is the map: -->
+    <map name="justamap">
+        <!-- You can define single areas, you and also use the href attribute -->
+        <!-- the order seems to matter in the attributes... not sure why -->
+        <area shape="circle" coords="120,120,80" title="This is the sun, yep!"
+              alt="This is the sun" href="http://en.wikipedia.org/wiki/Sun" target="_blank"/>
+    </map>
+
+    <!-- Let an image float beside a text: -->
+    <p>
+        <img src="../images/example_2_sun.jpeg" alt="the sun again" style="float:left;width:50px;height:50px"/>
+        This image is floating beside some text. <br/> Jep Jep!
+    </p>
+
+    <hr/>
+
+    <!-- It's time to make a table... -->
+    <!-- if the table should have a border use the border attribute, see also CSS file for the table style -->
+    <table border="1" style="width:50%">
+        <!-- you can use a caption, it MUST be put immediately after the opening tag-->
+        <!-- ISSUE: I'm not quite sure how captions are utilized afterwards... -->
+        <caption>Just a table</caption>
+        <!-- the element tr stands for a new row -->
+        <tr>
+            <th>This is a heading</th>
+            <!-- the element td stands for a new data entry, a td element can contain many different elements (img, txest, tables, etc.) -->
+            <td>1</td>
+            <td>First Row</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td colspan="2">To span two columns</td>
+            <!-- use the attribute rowspan to span multiple rows. -->
+        </tr>
+    </table>
+
+
+    <!-- work with the id attribute to make special styles for a table, check out the css file fore details -->
+    <table id="t01" border="1" style="width:50%">
+        <!-- you can use a caption, it MUST be put immediately after the opening tag-->
+        <!-- ISSUE: I'm not quite sure how captions are utilized afterwards... -->
+        <caption>I'm special!</caption>
+        <!-- the colgroup element is used to set the stile of several col elements ... -->
+        <colgroup>
+            <!-- in the colgroup use the col elements to specify the formatting of single cols-->
+            <col span="2" style="background-color:red"/>
+            <col style="background-color:yellow"/>
+        </colgroup>
+        <tr>
+            <th>This is a heading</th>
+            <!-- the element td stands for a new data entry, a td element can contain many different elements (img, txest, tables, etc.) -->
+            <td>1</td>
+            <td>First Row</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td colspan="2">To span two columns</td>
+            <!-- use the attribute rowspan to span multiple rows. -->
+        </tr>
+        <tr>
+            <th>Again a heading</th>
+            <!-- the element td stands for a new data entry, a td element can contain many different elements (img, txest, tables, etc.) -->
+            <td>3</td>
+            <td>Third Row</td>
+        </tr>
+    </table>
+
+    <!-- a table can have header, body and footer rows. Here is an example-->
+    <!-- I'm not quite sure what the effective differences are between those types -->
+    <p>Table with thead, tfoot, and tbody</p>
+    <table>
+          <thead>
+                <tr>
+                      <th>Header content 1</th>
+                      <th>Header content 2</th>
+                </tr>
+          </thead>
+          <tfoot>
+                <tr>
+                      <td>Footer content 1</td>
+                      <td>Footer content 2</td>
+                </tr>
+          </tfoot>
+          <tbody>
+                <tr>
+                      <td>Body content 1</td>
+                      <td>Body content 2</td>
+                </tr>
+          </tbody>
+    </table>
+
+    <hr/>
+
+    <!-- It is time for lists: -->
+    <!-- Various lists are possible: unordered list (ul) ordered lists (ol) and description lists (dl) -->
+    <!-- An element in the list is put in the li element (dt  and dd elements for dl lists)-->
+    <!-- Unordered lists (ul): the style attribute (list-style-type property) defines the marker -->
+    <!-- You can use unordered lists as menu buttons: (see CSS for the formatting) -->
+
+    <ul id="menu">
+        <li><a href="#top">Go To Top</a></li>
+        <li><a href="example_2_playground.html" target="_blank">A Presentation</a></li>
+        <li><a href="#top">This would be the top again</a></li>
+    </ul>
+    <!-- In an ordered list use the attribute type to set the type of ordering ("1" for numbering, "a" or "A", "i" or "I") -->
+    <!-- In the definition lists, the element dt (define term) should be followed by a dd (define data) element -->
+
+    <!-- It is time to look at containers now! There are two container elements: div and span -->
+    <!-- In both, the attributes style and class are often used. -->
+    <!-- div defines a container that takes the position of a block, so newline space around etc -->
+    <!-- span is an inline container. it can e.g. be used to change the color in a paragraph:-->
+    <p>This is just a paragraph to <span style="color:#00d319;font-size:200%">illustrate</span> the use of span.</p>
+
+    <hr/>
+
+    <!-- The class attribute can be used to group serveral html elements together. This is mainly useful for the formatting-->
+    <!-- as we can the define for a particular class a particular layout. See in the CSS for more details -->
+    <div class="alert">
+        <h2>This is an alert</h2>
+    </div>
+    <div class="alert">
+        <h2>and another alert</h2>
+    </div>
+
+    <!-- div elements are often used to create layouts, a simple example is here: -->
+    <div id="header">
+        <h1>Some general title</h1>
+    </div>
+    <div id="nav">
+        an option <br/>
+        another one <br/>
+        and another one <br/>
+    </div>
+    <div id="section">
+        here goes the description of the thing.
+    </div>
+    <div id="footer">
+        <p>What remains to say: <span style="font-family:arial">boom!</span></p>
+    </div>
+
+    <!-- html5 offers special elements for this type of arrangements now, here is a list:-->
+    <br/>
+    <h1>For html5 one can use the following elements:</h1>
+    <table style="width:100%">
+    <tr>
+    <td style="width:225px;vertical-align:top">
+    <img alt="HTML5 Semantic Elements" src="../images/img_sem_elements.gif" width="219" height="258">
+    </td>
+    <td>
+    <table class="reference" style="width:100%">
+    <tr>
+      <td>header</td>
+      <td>Defines a header for a document or a section</td>
+    </tr>
+    <tr>
+      <td>nav</td>
+      <td>Defines a container for navigation links</td>
+    </tr>
+    <tr>
+      <td>section</td>
+      <td>Defines a section in a document</td>
+    </tr>
+    <tr>
+      <td>article</td>
+      <td>Defines an independent self-contained article </td>
+    </tr>
+    <tr>
+      <td>aside</td>
+      <td>Defines content aside from the content (like a sidebar)</td>
+    </tr>
+    <tr>
+      <td>footer</td>
+      <td>Defines a footer for a document or a section</td>
+    </tr>
+    <tr>
+      <td>details</td>
+      <td>Defines additional details</td>
+    </tr>
+    <tr>
+      <td>summary</td>
+      <td>Defines a heading for the details element</td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+
+    <br/>
+    <h2>the table element was not designed to be used to make layouts even though it is possible to use it.</h2>
+
+    <h1>Do resizing of your html page.</h1>
+    <table>
+        <tr>
+            <td>There are two ways to make a side nicely rescale:</td>
+        </tr>
+        <tr>
+            <th>Homemade:</th>
+            <td>basically use the style attribute <span class="important">float</span></td>
+        </tr>
+        <tr>
+            <th>Existing frameworks:</th>
+            <td>The <span class="important">bootstrap</span> class seems rather commonly used.</td>
+        </tr>
+    </table>
+
+    <!-- Here comes the bootstrap example:-->
+    <!-- It basically works using the class attribute for div elements -->
+    <div class="container">
+    <div class="jumbotron">
+      <h1>W3Schools Demo</h1>
+      <p>Resize this responsive page!</p>
+    </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>It is the most populous city in the United Kingdom,
+        with a metropolitan area of over 13 million inhabitants.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Paris</h2>
+        <p>Paris is the capital and most populous city of France.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Tokyo</h2>
+        <p>Tokyo is the capital of Japan, the center of the Greater Tokyo Area,
+        and the most populous metropolitan area in the world.</p>
+      </div>
+    </div>
+    </div>
+
+    <br/>
+
+    <!-- This is just an import from the shapely svg creator (swissMap project) don't mind this -->
+    <svg height="210" width="500">
+        <g fill-rule="evenodd" fill="#66cc99" stroke="#555555"
+                stroke-width="2.0" opacity="0.6">
+            <path d="M 0.0,0.0 L 100.0,0.0 L 100.0,100.0 L 0.0,100.0 L 0.0,0.0 z" ></path>
+        </g>
+    </svg>
+
+    <!-- It is time for forms... -->
+
+
+</body>
+</html>
