@@ -27,12 +27,13 @@ https://www.pxweb.bfs.admin.ch/pxweb/en/px-x-0102010000_101/-/px-x-0102010000_10
 Using a network model allows to incorporate:
 
   - population densities (on the municipality level).
-  - age distribution (on the municipality level) with the possibility to introduce age specific pathogenic parameters and contact rates.
+  - age distribution (on the municipality level) with the possibility to introduce age specific pathogenic and contact parameters.
 
 ## Limitations
 
 Neighbouring countries are missing.
 This leads to a general reduction of the R0 in the boundary regions and does not allow to model the impact of incidences in neighbouring regions.
+Without the inclusion of the demographics in neighbouring countires (at least the boarder regions) this model is unlikely to provide meaningful predictions inside Switzerland.
 
 The data used here stems from population counts which are not carried out frequently.
 In the current state the count from 2000 were the most recent ones.
