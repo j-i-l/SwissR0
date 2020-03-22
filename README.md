@@ -21,8 +21,8 @@ https://www.pxweb.bfs.admin.ch/pxweb/en/px-x-0102010000_101/-/px-x-0102010000_10
 
 Using a network model allows to incorporate:
 
-	- population densities (on the municipality level).
-	- age distribution (on the municipality level) with the possibility to introduce age specific pathogenic parameters and contact rates.
+  - population densities (on the municipality level).
+  - age distribution (on the municipality level) with the possibility to introduce age specific pathogenic parameters and contact rates.
 
 ## Limitations
 
