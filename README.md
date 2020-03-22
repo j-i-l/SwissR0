@@ -32,3 +32,9 @@ This leads to a general reduction of the R0 in the boundary regions and does not
 The data used here stems from population counts which are not carried out frequently.
 In the current state the count from 2000 were the most recent ones.
 The better approach would be to use resident population data from the link provided above.
+
+
+## Presentation
+
+An HTML-based presentation of some basic results is available [here](presentation/presentations/jgm_26_11_14/pres.html).
+Simply clone the repo and then run the file in your favourite browser, but note that js is required to display the presentation correctly.
