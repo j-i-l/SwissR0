@@ -1,12 +1,12 @@
 # SwissR0
 
-This rather old project (2014) is a quick and dirty study to assess municipality based differences in R0 arising from differences in population density differences in Switzerland.
+This rather old project (2014) is a quick and dirty study to assess differences in R0 arising from differences in population densities across municipalities in Switzerland.
 
 The assessment if based on a contact network approach, modeling the population as a random graph with distance based connection probabilities between individuals.
 Individuals are distributed homogeneously over the municipal area (certainly inaccurate in rural and mountain regions).
 
 A HTML-based presentation of the basic results is available [here](presentation/presentations/jgm_26_11_14/pres.html).
-_Note: The presentation relies on various js that are provided directly with the repository. If you run these files it is at your own risk._
+_Note: The presentation relies on various js that are provided directly with the repository. You run these files at your own risk._
 
 ![relative representation of R0](presentation/presentations/jgm_26_11_14/plots/r0_2000_averaged_0_01.svg)
 
